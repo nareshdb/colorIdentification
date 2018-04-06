@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F1R-bv-svC">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="137"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="137"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdG-A2-95i">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="116"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpv-Vp-TYT">
+                        <rect key="frame" x="0.0" y="116" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.15686274509803921" green="0.1764705882352941" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ZdG-A2-95i" firstAttribute="bottom" secondItem="wpv-Vp-TYT" secondAttribute="top" id="7PC-3N-Oex"/>
+                <constraint firstItem="ZdG-A2-95i" firstAttribute="leading" secondItem="F1R-bv-svC" secondAttribute="leading" id="9v0-DA-hp3"/>
+                <constraint firstAttribute="bottom" secondItem="wpv-Vp-TYT" secondAttribute="bottom" id="RDv-n9-n5Q"/>
+                <constraint firstAttribute="trailing" secondItem="ZdG-A2-95i" secondAttribute="trailing" id="dTJ-if-4Sv"/>
+                <constraint firstItem="ZdG-A2-95i" firstAttribute="top" secondItem="F1R-bv-svC" secondAttribute="top" id="iNa-Mh-udr"/>
+                <constraint firstAttribute="trailing" secondItem="wpv-Vp-TYT" secondAttribute="trailing" id="jgY-3C-Jwj"/>
+                <constraint firstItem="wpv-Vp-TYT" firstAttribute="leading" secondItem="F1R-bv-svC" secondAttribute="leading" id="m1G-z3-SW1"/>
+            </constraints>
+            <size key="customSize" width="150" height="137"/>
+            <point key="canvasLocation" x="-26" y="9"/>
+        </collectionViewCell>
+    </objects>
+</document>
