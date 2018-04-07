@@ -8,4 +8,6 @@ target 'ColorIdentification' do
   # Pods for ColorIdentification
   pod 'ColorThiefSwift'
   pod 'Toast-Swift', '2.0.0'
+  pod 'RealmSwift'
+
 end
