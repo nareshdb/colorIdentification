@@ -7,9 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Image: NSObject {
     
+    var image: UIImage!
     var colors: [Color] = []
     
+    init(image: UIImage, colors: [Color]) {
+        self.image = image
+        self.colors = colors
+    }
 }

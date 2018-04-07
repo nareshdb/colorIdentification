@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="496" height="134"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PfL-6p-Brb">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PfL-6p-Brb">
                         <rect key="frame" x="0.0" y="0.0" width="248" height="134"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqT-kZ-8Zg">
@@ -28,12 +28,16 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fXq-8I-vIU">
                                 <rect key="frame" x="0.0" y="0.0" width="248" height="134"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AYD-tw-rgj">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AYD-tw-rgj">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="fsH-3U-uHj" id="6tc-VJ-B1s"/>
+                                    <outlet property="delegate" destination="fsH-3U-uHj" id="ITP-0x-rsa"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,6 +61,10 @@
                 <constraint firstItem="UqT-kZ-8Zg" firstAttribute="leading" secondItem="PfL-6p-Brb" secondAttribute="trailing" id="r2o-iB-RWK"/>
             </constraints>
             <size key="customSize" width="496" height="134"/>
+            <connections>
+                <outlet property="cvColors" destination="fXq-8I-vIU" id="4Dq-YC-xu1"/>
+                <outlet property="imgPreview" destination="PfL-6p-Brb" id="73y-4t-pbb"/>
+            </connections>
             <point key="canvasLocation" x="26" y="-71"/>
         </collectionViewCell>
     </objects>

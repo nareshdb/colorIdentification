@@ -17,15 +17,42 @@ class ImageViewController: UIViewController {
 
     @IBOutlet weak var imgPreview: UIImageView!
     @IBOutlet weak var cvColors: UICollectionView!
+    @IBOutlet weak var imagePlaceholder: UIView!
     
-    weak var image: Image!
+    var image: Image? {
+        didSet {
+        
+            if !self.isViewLoaded {return}
+            
+            if let i = self.image {
+                self.imagePlaceholder.isHidden = true
+                self.imgPreview.image = i.image
+                self.currentImageColors = i.colors
+                self.cvColors.reloadData()
+                self.cvColors.setContentOffset(.zero, animated: true)
+            }
+            else {
+                self.imgPreview.image = nil
+                self.imagePlaceholder.isHidden = false
+                self.currentImageColors = []
+                self.cvColors.reloadData()
+                self.openCameraPopUp()
+            }
+        }
+    }
     var imagePicker = UIImagePickerController()
+    weak var delegate: ImageViewControllerDelegate?
+    var currentImageColors: [Color] = []
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.cvColors.register(UINib(nibName: "ColorCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ColorCell")
+        
+        self.imagePicker.delegate = self
+        
+        self.cvColors.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 10)
     }
 
     @IBAction func btnPickerAction(_ sender: UIButton) {
@@ -33,17 +60,33 @@ class ImageViewController: UIViewController {
     }
     
     @IBAction func btnSaveEditAction(_ sender: UIButton) {
+        guard let img = self.imgPreview.image
+            else {
+                self.view.makeToast("No Image Selected")
+                return
+        }
         
+        //Edit
+        if let _image = self.image {
+            _image.image = img
+            _image.colors = self.currentImageColors
+            self.delegate?.didEdit(image: _image)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        //AddNew
+        else {
+            let _image = Image(image: img, colors: self.currentImageColors)
+            self.delegate?.didAdd(image: _image)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func change(_image: UIImage) {
         
-        self.imgPreview.image = _image
-        self.image.colors.removeAll()
-        
+        self.currentImageColors.removeAll()
         
         if let colors = ColorThief.getPalette(from: _image, colorCount: 20) {
-            self.image.colors = colors.flatMap { (color) -> Color? in
+            self.currentImageColors = colors.flatMap { (color) -> Color? in
                 return Color(
                     color: color.makeUIColor(),
                     name: nil,
@@ -54,7 +97,7 @@ class ImageViewController: UIViewController {
         }
         
         if let primaryColor = ColorThief.getColor(from: _image) {
-            self.image.colors.insert(
+            self.currentImageColors.insert(
                 Color(
                     color: primaryColor.makeUIColor(),
                     name: nil,
@@ -64,26 +107,34 @@ class ImageViewController: UIViewController {
             ), at: 0)
         }
 
-        self.cvColors.reloadData()
+        //The function was called in background queue, so loading views in main queue
+        DispatchQueue.main.async {
+            self.imagePlaceholder.isHidden = true
+            self.imgPreview.image = _image
+            self.cvColors.reloadData()
+        }
     }
     
 }
 
-extension ImageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ImageViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.height, height: collectionView.bounds.height)
+    }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCollectionViewCell
-        let color = self.image.colors[indexPath.item]
+        let color = self.currentImageColors[indexPath.item]
         cell.colorView.backgroundColor = color.color
-        cell.lblRGB.text = "R:\(color.red) G:\(color.green) B:\(color.blue)"
+        cell.lblRGB.text = "R:\(Int(color.red!)) G:\(Int(color.green!)) B:\(Int(color.blue!))"
         return cell
     }
     
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.image?.colors.count ?? 0
+        return self.currentImageColors.count
     }
     
 }
@@ -180,6 +231,8 @@ extension ImageViewController: UIImagePickerControllerDelegate, UINavigationCont
                 }
         }))
         
+        cameraPopUp.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
         self.present(cameraPopUp, animated: true, completion: nil)
     }
     
@@ -197,7 +250,10 @@ extension ImageViewController: UIImagePickerControllerDelegate, UINavigationCont
         else {
             return
         }
-        self.change(_image: pickedImage)
+        self.view.makeToast("Loading your colors")
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+            self.change(_image: pickedImage)
+        }
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -221,3 +277,7 @@ fileprivate extension UIColor {
     }
 }
 
+protocol ImageViewControllerDelegate: NSObjectProtocol {
+    func didAdd(image: Image)
+    func didEdit(image: Image)
+}
