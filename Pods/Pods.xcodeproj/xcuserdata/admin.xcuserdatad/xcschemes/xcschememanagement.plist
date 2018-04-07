@@ -4,18 +4,39 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ColorThiefSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ColorIdentification.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>UIImageColors.xcscheme</key>
+		<key>Toast-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>0F3F818C1E6937CEF3FBC9C0FC681126</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62DFF2535C96B21014AC9DEEDAFA3794</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A777A06D7C70BBA7B9CAB78B4320D585</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

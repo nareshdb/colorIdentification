@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F1R-bv-svC">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="F1R-bv-svC" customClass="ColorCollectionViewCell" customModule="ColorIdentification" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="150" height="137"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -41,6 +41,10 @@
                 <constraint firstItem="wpv-Vp-TYT" firstAttribute="leading" secondItem="F1R-bv-svC" secondAttribute="leading" id="m1G-z3-SW1"/>
             </constraints>
             <size key="customSize" width="150" height="137"/>
+            <connections>
+                <outlet property="colorView" destination="ZdG-A2-95i" id="Ane-1c-IFB"/>
+                <outlet property="lblRGB" destination="wpv-Vp-TYT" id="qKa-V9-43r"/>
+            </connections>
             <point key="canvasLocation" x="-26" y="9"/>
         </collectionViewCell>
     </objects>

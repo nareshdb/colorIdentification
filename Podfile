@@ -6,6 +6,6 @@ target 'ColorIdentification' do
   use_frameworks!
 
   # Pods for ColorIdentification
-  pod 'UIImageColors'
-
+  pod 'ColorThiefSwift'
+  pod 'Toast-Swift', '2.0.0'
 end
