@@ -9,5 +9,7 @@ target 'ColorIdentification' do
   pod 'ColorThiefSwift'
   pod 'Toast-Swift', '2.0.0'
   pod 'RealmSwift'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 
 end

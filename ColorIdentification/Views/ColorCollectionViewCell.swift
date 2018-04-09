@@ -11,6 +11,7 @@ import UIKit
 class ColorCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var colorView: UIView!
+    @IBOutlet weak var lblName: UILabel!
     @IBOutlet var lblRGB: UILabel!
     
 }

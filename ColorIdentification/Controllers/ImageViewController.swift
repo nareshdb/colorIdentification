@@ -103,6 +103,7 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let color = self.currentImageColors[indexPath.item]
         cell.colorView.backgroundColor = color.color
         cell.lblRGB.text = "R:\(Int(color.red)) G:\(Int(color.green)) B:\(Int(color.blue))"
+        cell.lblName.text = color.name?.capitalized
         return cell
     }
     
@@ -250,6 +251,29 @@ extension ImageViewController: UIImagePickerControllerDelegate, UINavigationCont
                         blue: Double(primaryColor.b)
                 ), at: 0)
             }
+            
+            //Getting color names
+            DispatchQueue.main.async {
+                self.view.makeToast("Getting Color names, please wait.")
+            }
+
+            //Keeping a reference in case user changes image
+            let _colors = self.currentImageColors
+            Networking.getColorNames(colors: self.currentImageColors.map({ (color) -> (r: Double, g: Double, b: Double) in
+                return (r: color.red, g: color.green, b: color.blue)
+            }), response: { (res) in
+                switch res {
+                case .success(let names):
+                    for i in 0..<names.count {
+                        _colors[i].name = names[i]
+                    }
+                    DispatchQueue.main.async {
+                        self.cvColors.reloadData()
+                    }
+                case .error(let message):
+                    self.view.makeToast("Couldn't get color names 😐, Error: \(message)")
+                }
+            })
             
             //The function was called in background queue, so loading views in main queue
             DispatchQueue.main.async {

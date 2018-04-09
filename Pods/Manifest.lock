@@ -1,23 +1,29 @@
 PODS:
+  - Alamofire (4.6.0)
   - ColorThiefSwift (0.2.2)
   - Realm (3.1.1):
     - Realm/Headers (= 3.1.1)
   - Realm/Headers (3.1.1)
   - RealmSwift (3.1.1):
     - Realm (= 3.1.1)
+  - SwiftyJSON (4.0.0)
   - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - ColorThiefSwift
   - RealmSwift
+  - SwiftyJSON
   - Toast-Swift (= 2.0.0)
 
 SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   ColorThiefSwift: 4e152d62f80b8a916597b878dc6b2409ee66a3d5
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 10bb5717d8bd92ae420847e3735f0a9b0df1f443
+PODFILE CHECKSUM: 0a368fe5c65165251225ee6c21733ae69c823b0e
 
 COCOAPODS: 1.2.0

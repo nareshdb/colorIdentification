@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,9 +19,24 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdG-A2-95i">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="121"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b19-mu-XIo">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="121"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b19-mu-XIo" firstAttribute="leading" secondItem="ZdG-A2-95i" secondAttribute="leading" id="2PF-gv-3aB"/>
+                            <constraint firstAttribute="bottom" secondItem="b19-mu-XIo" secondAttribute="bottom" id="GLH-w6-yYA"/>
+                            <constraint firstAttribute="trailing" secondItem="b19-mu-XIo" secondAttribute="trailing" id="dHc-ol-0s3"/>
+                            <constraint firstItem="b19-mu-XIo" firstAttribute="top" secondItem="ZdG-A2-95i" secondAttribute="top" id="jwJ-XZ-bSi"/>
+                        </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpv-Vp-TYT">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpv-Vp-TYT">
                         <rect key="frame" x="0.0" y="121" width="150" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.15686274509803921" green="0.1764705882352941" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,6 +57,7 @@
             <size key="customSize" width="150" height="137"/>
             <connections>
                 <outlet property="colorView" destination="ZdG-A2-95i" id="Ane-1c-IFB"/>
+                <outlet property="lblName" destination="b19-mu-XIo" id="6L9-qX-JJu"/>
                 <outlet property="lblRGB" destination="wpv-Vp-TYT" id="qKa-V9-43r"/>
             </connections>
             <point key="canvasLocation" x="-26" y="9"/>
