@@ -104,6 +104,8 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
         cell.colorView.backgroundColor = color.color
         cell.lblRGB.text = "R:\(Int(color.red)) G:\(Int(color.green)) B:\(Int(color.blue))"
         cell.lblName.text = color.name?.capitalized
+        cell.lblName.layer.shadowRadius = 7
+        cell.lblName.layer.shadowOffset = .zero
         return cell
     }
     
